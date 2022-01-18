@@ -1,4 +1,10 @@
 <?php
+/**
+ * Author: Abiyoga Bayu Primadi
+ * Email: abiyoga1335@gmail.com
+ * Receiver: lawrence.low@webimp.com.sg
+ * Deadline: 6PM SGT time
+ */
 
 namespace Assessment\Algo;
 
