@@ -1,0 +1,17 @@
+{
+    "name": "doyoque/assessment",
+    "description": "Simple algorithmic PHP scripts",
+    "type": "project",
+    "authors": [
+        {
+            "name": "doyoque",
+            "email": "abiyoga1335@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Assessment\\Algo\\": "src"
+        }
+    }
+}
