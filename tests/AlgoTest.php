@@ -94,5 +94,25 @@ class AlgoTest extends TestCase
 
         $this->assertEquals(1, preg_match("/\p{Han}+/u", $str));
     }
+
+    /**
+     * Get chinese character.
+     *
+     * @return void
+     */
+    public function test_get_chinese_character()
+    {
+        $str = 'drinking giving jogging 喝 喝 passing 制图 giving 跑步 吃';
+        $strArray = explode(" ", $str);
+        $chineseArray = [];
+
+        foreach($strArray as $data) {
+            if (preg_match("/\p{Han}+/u", $data) === 1) {
+                $chineseArray[] = $data;
+            }
+        }
+
+        $this->assertEquals(5, count($chineseArray));
+    }
 }
 

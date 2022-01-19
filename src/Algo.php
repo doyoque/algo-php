@@ -10,20 +10,41 @@ namespace Assessment\Algo;
 
 class Algo
 {
+    /**
+     * @var string $REDCOLOR
+     */
+    private $REDCOLOR = "\033[01;31m";
+
+    /**
+     * @var string $ENDCOLOR
+     */
+    private $ENDCOLOR = "\033[0m";
+
+    /**
+     * @var string $PREGMATCH
+     */
+    private $PREGMATCH = "/\p{Han}+/u";
+
+    /**
+     * @var integer $INT_MAX
+     */
+    private $INT_MAX = 2147483647;
+
+    /**
+     * @var array[] $firstArray
+     * @var array[] $secondArray
+     */
     public function __construct(
-        /**
-         * @var array $firstArray
-         * @var array $secondArray
-         */
         public array $firstArray = [],
         public array $secondArray = [],
+        public string $strData = 'drinking giving jogging 喝 喝 passing 制图 giving 跑步 吃',
     ) {
     }
 
     /**
      * Get first array
      *
-     * @return array
+     * @return array[]
      */
     public function getFirstArray()
     {
@@ -33,7 +54,7 @@ class Algo
     /**
      * Get second array
      *
-     * @return array
+     * @return array[]
      */
     public function getSecondArray()
     {
@@ -60,12 +81,11 @@ class Algo
     /**
      * Find second smallest value.
      *
-     * @return number
+     * @return integer
      */
     public function secondSmallest()
     {
-        $INT_MAX = 2147483647;
-        $first = $second = $INT_MAX;
+        $first = $second = $this->INT_MAX;
 
         for ($i = 0; $i < count($this->getFirstArray()); $i++) {
             if ($this->getFirstArray()[$i] < $first) {
@@ -77,5 +97,23 @@ class Algo
         }
 
         return $second;
+    }
+
+    /**
+     * Turn chinese character to red.
+     *
+     * @return string
+     */
+    public function getChineseCharacter()
+    {
+        $strArray = explode(" ", $this->strData);
+
+        foreach($strArray as $i => $data) {
+            if (preg_match($this->PREGMATCH, $data)) {
+                $strArray[$i] = $this->REDCOLOR . $data . $this->ENDCOLOR;
+            }
+        }
+
+        return implode(" ", $strArray);
     }
 }
